@@ -21,7 +21,7 @@ func _physics_process(delta):
 	
 	velocity += input_vector.rotated(rotation) * acceleration
 	velocity.limit_length(max_speed)
-	print(velocity)
+	#print(velocity)
 	#print(rotation)
 	
 	if Input.is_action_pressed("escape"):
