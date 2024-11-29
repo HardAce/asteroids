@@ -15,7 +15,6 @@ func _physics_process(delta):
 	#global_position += movement_vector.rotated(rotation) * speed * delta
 	total_distance += self.global_position.distance_to(last_position)
 	total_time += delta
-	print(delta)
 	
 	#if total_distance >= range:
 	if total_time > 1:
