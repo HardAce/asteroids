@@ -9,13 +9,18 @@ var last_position := Vector2(0, -1)
 var total_distance := 0.0
 var total_time := 0.0
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	last_position = self.global_position
 	global_position += (initial_movement * delta) + (movement_vector.rotated(rotation) * speed * delta)
-	#global_position += movement_vector.rotated(rotation) * speed * delta
 	total_distance += self.global_position.distance_to(last_position)
 	total_time += delta
 	
-	#if total_distance >= range:
 	if total_time > 1:
+		queue_free()
+
+
+func _on_area_entered(area):
+	if area is Asteroid:
+		var asteroid = area
+		asteroid.explode()
 		queue_free()

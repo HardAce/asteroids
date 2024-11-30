@@ -11,18 +11,21 @@ signal laser_shot(laser)
 
 var laser_scene := preload("res://scenes/lazer.tscn")
 var last_position := Vector2(0, -1)
+var shoot_cd := false
+var fire_rate := 0.3
 
-func _process(delta):
-	if Input.is_action_just_pressed("shoot"):
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("shoot") and !shoot_cd:
+		shoot_cd = true
 		shoot_laser()
+		await get_tree().create_timer(fire_rate).timeout
+		shoot_cd = false
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	var input_vector := Vector2(0, Input.get_axis("move_forward","move_backward"))
 	
 	velocity += input_vector.rotated(rotation) * acceleration
 	velocity.limit_length(max_speed)
-	#print(velocity)
-	#print(rotation)
 	
 	if Input.is_action_pressed("escape"):
 		get_tree().quit()
@@ -53,7 +56,7 @@ func _physics_process(delta):
 		global_position.x = 0
 	
 
-func shoot_laser():
+func shoot_laser() -> void:
 	var l = laser_scene.instantiate()
 	l.global_position = muzzle.global_position
 	l.rotation = rotation
