@@ -40,6 +40,13 @@ func _ready() -> void:
 				sprite.texture = preload("res://assets/PNG/Meteors/meteorBrown_small1.png")
 			else:
 				sprite.texture = preload("res://assets/PNG/Meteors/meteorGrey_small1.png")
+		AsteroidSize.TINY:
+			speed = randf_range(150.0, 200.0)
+			cshape.shape = preload("res://resources/asteroid_cshape_tiny1.tres")
+			if randi_range(0,1) == 0:
+				sprite.texture = preload("res://assets/PNG/Meteors/meteorBrown_tiny1.png")
+			else:
+				sprite.texture = preload("res://assets/PNG/Meteors/meteorGrey_tiny1.png")
 
 func _physics_process(delta: float) -> void:
 	global_position += movement_vector.rotated(direction) * speed * delta
@@ -63,9 +70,10 @@ func explode():
 		AsteroidSize.MEDIUM:
 			new_size = AsteroidSize.SMALL
 		AsteroidSize.SMALL:
+			new_size = AsteroidSize.TINY
+		AsteroidSize.TINY:
 			queue_free()
 			return
-			#new_size = AsteroidSize.TINY
-	
-	emit_signal("exploded", global_position, new_size)
+	exploded.emit(global_position, new_size)
+	#emit_signal("exploded", global_position, new_size)
 	queue_free()

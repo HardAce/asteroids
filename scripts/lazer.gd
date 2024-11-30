@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed := 500.0
-@export var range := 500.0
+#@export var range := 500.0
 @export var initial_movement : Vector2
 
 var movement_vector := Vector2(0,-1)

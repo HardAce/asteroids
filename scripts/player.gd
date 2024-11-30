@@ -14,7 +14,7 @@ var last_position := Vector2(0, -1)
 var shoot_cd := false
 var fire_rate := 0.3
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_pressed("shoot") and !shoot_cd:
 		shoot_cd = true
 		shoot_laser()
@@ -61,5 +61,6 @@ func shoot_laser() -> void:
 	l.global_position = muzzle.global_position
 	l.rotation = rotation
 	l.initial_movement = velocity
-	emit_signal("laser_shot", l)
+	laser_shot.emit(l)
+	#emit_signal("laser_shot", l)
 	
