@@ -13,7 +13,7 @@ func _ready() -> void:
 		asteroid.connect("exploded", _on_asteroid_exploded)
 
 func _on_player_laser_shot(laser) -> void:
-	lasers.add_child(laser)
+	lasers.add_child(laser) 
 
 func _on_asteroid_exploded(pos, size):
 	for i in range(2):
