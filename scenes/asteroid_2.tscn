@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://5c2p3joio7u4"]
+
+[ext_resource type="Texture2D" uid="uid://s8cm8c1tyhjl" path="res://assets/PNG/Meteors/meteorGrey_big1.png" id="1_2da1t"]
+[ext_resource type="Script" path="res://scripts/asteroid_2.gd" id="1_mxk6r"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kpwbw"]
+bounce = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0iw03"]
+radius = 46.0109
+
+[node name="asteroid2" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 11
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_kpwbw")
+gravity_scale = 0.0
+continuous_cd = 2
+contact_monitor = true
+script = ExtResource("1_mxk6r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2da1t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0iw03")
