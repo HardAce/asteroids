@@ -19,7 +19,8 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 
-func _on_area_entered(area):
+#func _on_area_entered(area):
+func _on_area_entered(area: Area2D) -> void:
 	if area is Asteroid:
 		var asteroid = area
 		asteroid.explode()

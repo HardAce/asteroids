@@ -1,14 +1,21 @@
 extends Node2D
 
 @onready var lasers = $Lasers
-@onready var player = $Player
+@onready var player = $Player2
 @onready var asteroids = $Asteroids
+@onready var hud = $UI/HUD
 
 var asteroid_scene = preload("res://scenes/asteroid.tscn")
 
 var candidate : Vector2
 
+var score := 0:
+	set(value):
+		score = value
+		hud.score = score
+
 func _ready() -> void:
+	score = 0
 	var screen_size = get_viewport_rect().size
 	player.connect("laser_shot", _on_player_laser_shot)
 	for i in range(5):
@@ -20,14 +27,16 @@ func _ready() -> void:
 		a.global_position = candidate
 		a.size = "LARGE"
 		a.connect("exploded", _on_asteroid_exploded)
-		asteroids.add_child(a)
+		asteroids.call_deferred("add_child", a)
+		#asteroids.add_child(a)
 	#for asteroid in asteroids.get_children():
 	#	asteroid.connect("exploded", _on_asteroid_exploded)
 
 func _on_player_laser_shot(laser) -> void:
 	lasers.add_child(laser) 
 
-func _on_asteroid_exploded(pos, size):
+func _on_asteroid_exploded(pos, size, points):
+	score += points
 	for i in range(2):
 		var a = asteroid_scene.instantiate()
 		a.global_position = pos

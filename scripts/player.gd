@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 signal laser_shot(laser)
 
@@ -40,7 +40,6 @@ func _physics_process(delta: float) -> void:
 			velocity.x -= sign(velocity.x) * (minf(inertia, abs(velocity.x)) * (abs(velocity.x) / (abs(velocity.x) + abs(velocity.y))))
 		if abs(velocity.y) > 0:
 			velocity.y -= sign(velocity.y) * (minf(inertia, abs(velocity.y)) * (abs(velocity.y) / (abs(velocity.x) + abs(velocity.y))))
-
 	move_and_slide()
 	
 	last_position = self.global_position
@@ -55,6 +54,10 @@ func _physics_process(delta: float) -> void:
 	if global_position.x > screen_size.x:
 		global_position.x = 0
 	
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * velocity.length())
 
 func shoot_laser() -> void:
 	var l = laser_scene.instantiate()
