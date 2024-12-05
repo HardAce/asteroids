@@ -15,7 +15,6 @@ script = ExtResource("1_3ocd0")
 
 [node name="Player" parent="." instance=ExtResource("1_xyo7l")]
 position = Vector2(966, 657)
-script = null
 
 [node name="Lasers" type="Node2D" parent="."]
 

@@ -62,9 +62,11 @@ func _physics_process(delta: float) -> void:
 	elif (global_position.x - cshape.shape.radius) > screen_size.x:
 		global_position.x = -cshape.shape.radius
 
-func _on_body_entered(body: Node2D) -> void:
-	if body is Player:
-		var player = body
+#func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
+	#if body is Player:
+		#var player = body
+	pass
 
 func explode():
 	var new_size

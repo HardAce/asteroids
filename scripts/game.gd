@@ -1,11 +1,12 @@
 extends Node2D
 
 @onready var lasers = $Lasers
-@onready var player = $Player2
+@onready var player = $Player
 @onready var asteroids = $Asteroids
 @onready var hud = $UI/HUD
 
 var asteroid_scene = preload("res://scenes/asteroid.tscn")
+var lasers_scene = preload("res://scenes/lazer.tscn")
 
 var candidate : Vector2
 

@@ -8,7 +8,6 @@ signal laser_shot(laser)
 @export var engine_power = 800
 @export var spin_power = 10000
 
-
 @onready var muzzle := $Muzzle
 
 var laser_scene := preload("res://scenes/lazer.tscn")
@@ -35,8 +34,7 @@ func _physics_process(delta: float) -> void:
 		get_tree().quit()
 	
 	thrust = Vector2.ZERO
-	if Input.is_action_pressed("thrust"):
-		thrust = transform.x * engine_power
+	
 	if (Input.is_action_just_released("rotate_left") or Input.is_action_just_released("rotate_right")):
 		lock_rotation = true
 	else:
@@ -64,11 +62,6 @@ func _physics_process(delta: float) -> void:
 		global_position.x = screen_size.x
 	if global_position.x > screen_size.x:
 		global_position.x = 0
-	
-	#for i in get_slide_collision_count():
-	#	var c = get_slide_collision(i)
-	#	if c.get_collider() is RigidBody2D:
-	#		c.get_collider().apply_central_impulse(-c.get_normal() * velocity.length())
 
 func shoot_laser() -> void:
 	var l = laser_scene.instantiate()
@@ -76,5 +69,3 @@ func shoot_laser() -> void:
 	l.rotation = rotation
 	l.initial_movement = linear_velocity
 	laser_shot.emit(l)
-	#emit_signal("laser_shot", l)
-	
