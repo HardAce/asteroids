@@ -37,6 +37,10 @@ func _ready() -> void:
 	#for asteroid in asteroids.get_children():
 	#	asteroid.connect("exploded", _on_asteroid_exploded)
 
+func _process(_delta: float) -> void:
+	if Input.is_action_pressed("escape"):
+		get_tree().quit()
+
 func _on_player_laser_shot(laser) -> void:
 	lasers.add_child(laser) 
 
