@@ -4,6 +4,8 @@ extends Node2D
 @onready var player = $Player
 @onready var asteroids = $Asteroids
 @onready var hud = $UI/HUD
+@onready var cruiser = $Cruiser
+@onready var player2 = $Player2
 
 var asteroid_scene = preload("res://scenes/asteroid.tscn")
 var lasers_scene = preload("res://scenes/lazer.tscn")
@@ -19,6 +21,8 @@ func _ready() -> void:
 	score = 0
 	var screen_size = get_viewport_rect().size
 	player.connect("laser_shot", _on_player_laser_shot)
+	player2.connect("laser_shot", _on_player_laser_shot)
+	cruiser.connect("laser_shot", _on_cruiser_laser_shot)
 	for i in range(5):
 		var valid_asteroid = true
 		while (valid_asteroid):
@@ -44,4 +48,7 @@ func _on_asteroid_exploded(pos, size, points):
 		a.size = size
 		a.connect("exploded", _on_asteroid_exploded)
 		asteroids.call_deferred("add_child", a)
-		#asteroids.add_child(a)
+
+
+func _on_cruiser_laser_shot(laser: Variant) -> void:
+	lasers.call_deferred("add_child", laser)

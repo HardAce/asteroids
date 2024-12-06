@@ -65,5 +65,3 @@ func shoot_laser() -> void:
 	l.rotation = rotation
 	l.initial_movement = velocity
 	laser_shot.emit(l)
-	#emit_signal("laser_shot", l)
-	

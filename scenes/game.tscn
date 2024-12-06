@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtxaf3adpwfqh"]
+[gd_scene load_steps=7 format=3 uid="uid://dtxaf3adpwfqh"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_3ocd0"]
 [ext_resource type="PackedScene" uid="uid://j5b36d5ofby5" path="res://scenes/player.tscn" id="1_xyo7l"]
 [ext_resource type="PackedScene" uid="uid://ypry5ykgl5x3" path="res://scenes/hud.tscn" id="2_4rvg1"]
 [ext_resource type="PackedScene" uid="uid://5c2p3joio7u4" path="res://scenes/asteroid_2.tscn" id="4_o0ns6"]
 [ext_resource type="PackedScene" uid="uid://dru14vuteq7s7" path="res://scenes/player_2.tscn" id="5_wtgqc"]
+[ext_resource type="PackedScene" uid="uid://bdyniyr7rkp1d" path="res://scenes/cruiser.tscn" id="6_hy3ev"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_3ocd0")
@@ -25,3 +26,7 @@ position = Vector2(568, 663)
 
 [node name="Player2" parent="." instance=ExtResource("5_wtgqc")]
 position = Vector2(1304, 608)
+angular_velocity = 1.74533
+
+[node name="Cruiser" parent="." instance=ExtResource("6_hy3ev")]
+position = Vector2(1468, 272)
