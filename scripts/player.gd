@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody2D
 
 signal laser_shot(laser)
+#signal thruster(thrust)
 
 @export var acceleration := 10.0
 @export var max_speed := 350.0
@@ -8,25 +9,31 @@ signal laser_shot(laser)
 @export var inertia := 10.0
 
 @onready var muzzle := $Muzzle
+@onready var thruster = $Engine/EngineThrust
 
 var laser_scene := preload("res://scenes/lazer.tscn")
 var last_position := Vector2(0, -1)
 var shoot_cd := false
 var fire_rate := 0.3
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_pressed("shoot") and !shoot_cd:
 		shoot_cd = true
 		shoot_laser()
 		await get_tree().create_timer(fire_rate).timeout
 		shoot_cd = false
-		
+	if Input.is_action_pressed("move_forward"):
+		thruster.visible = true
+		thruster.play()
+	elif thruster.is_playing():
+		thruster.visible = false
+		thruster.stop()
+	
 func _physics_process(delta: float) -> void:
 	var input_vector := Vector2(0, Input.get_axis("move_forward","move_backward"))
 	
 	velocity += input_vector.rotated(rotation) * acceleration
 	velocity = velocity.limit_length(max_speed)
-	print(velocity.length())
 	
 	if Input.is_action_pressed("rotate_right"):
 		rotate(deg_to_rad(rotation_speed*delta))
