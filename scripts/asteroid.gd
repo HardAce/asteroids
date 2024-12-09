@@ -62,10 +62,7 @@ func _physics_process(delta: float) -> void:
 	elif (global_position.x - cshape.shape.radius) > screen_size.x:
 		global_position.x = -cshape.shape.radius
 
-#func _on_body_entered(body: Node2D) -> void:
 func _on_body_entered(_body: Node2D) -> void:
-	#if body is Player:
-		#var player = body
 	pass
 
 func explode():
@@ -82,5 +79,4 @@ func explode():
 			queue_free()
 			return
 	exploded.emit(global_position, new_size, points)
-	#emit_signal("exploded", global_position, new_size)
 	queue_free()

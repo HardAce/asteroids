@@ -8,7 +8,6 @@ var last_position := Vector2(0, -1)
 var total_distance := 0.0
 var total_time := 0.0
 
-#func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	last_position = self.global_position
 	global_position += (initial_movement * delta) + (movement_vector.rotated(rotation) * speed * delta)

@@ -1,7 +1,6 @@
 class_name Player extends CharacterBody2D
 
 signal laser_shot(laser)
-#signal thruster(thrust)
 
 @export var acceleration := 10.0
 @export var max_speed := 350.0

@@ -46,7 +46,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("stop_inertia"):
 		angular_damp += 12 * delta
 		linear_damp += 12 * delta
-		#print(linear_damp)
 	else:
 		linear_damp = 0
 		angular_damp = 0
