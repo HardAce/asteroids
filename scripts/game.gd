@@ -2,17 +2,14 @@ extends Node2D
 
 @onready var players = $Players
 @onready var lasers = $Lasers
-#@onready var player = $Players/Player
 @onready var asteroids = $Asteroids
-@onready var hud = $UI/HUD
-#@onready var cruiser = $Cruiser
 @onready var cruiser = $Enemies
-#@onready var player2 = $Player2
+@onready var hud = $UI/HUD
 
 var player_scene = preload("res://scenes/player.tscn")
-var asteroid_scene = preload("res://scenes/asteroid.tscn")
+var asteroid_scene = preload("res://scenes/asteroid_2.tscn")
 var lasers_scene = preload("res://scenes/lazer.tscn")
-var crusier_scene = preload("res://scenes/cruiser.tscn")
+var cruiser_scene = preload("res://scenes/cruiser.tscn")
 
 var candidate : Vector2
 
@@ -24,7 +21,8 @@ var score := 0:
 func _ready() -> void:
 	score = 0
 	var screen_size = get_viewport_rect().size
-	var a = player_scene.instantiate()
+	#var a = player_scene.instantiate()
+	var a = cruiser_scene.instantiate()
 	a.connect("laser_shot", _on_player_laser_shot)
 	var valid = true
 	while (valid):
@@ -46,7 +44,7 @@ func _ready() -> void:
 	#players.call_deferred("add_child", a)
 	#player2.connect("laser_shot", _on_player_laser_shot)
 	#cruiser.connect("laser_shot", _on_cruiser_laser_shot)
-	for i in range(5):
+	for i in range(50):
 		valid = true
 		while (valid):
 			candidate = Vector2(randi_range(0,screen_size.x), randi_range(0,screen_size.y))

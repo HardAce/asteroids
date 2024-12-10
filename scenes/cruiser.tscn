@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdyniyr7rkp1d"]
+[gd_scene load_steps=5 format=3 uid="uid://bdyniyr7rkp1d"]
 
 [ext_resource type="Texture2D" uid="uid://bgnx0a0c7hnug" path="res://assets/kenney_space-shooter-extension/PNG/Sprites/Ships/spaceShips_007.png" id="1_7jbc6"]
 [ext_resource type="Script" path="res://scripts/cruiser.gd" id="1_nv5iu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qdb1e"]
+bounce = 0.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3la5"]
 size = Vector2(169, 149)
@@ -9,9 +12,9 @@ size = Vector2(169, 149)
 [node name="cruiser" type="RigidBody2D"]
 collision_layer = 16
 collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_qdb1e")
 gravity_scale = 0.0
 continuous_cd = 2
-angular_velocity = 1.74533
 script = ExtResource("1_nv5iu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

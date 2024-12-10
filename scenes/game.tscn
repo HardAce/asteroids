@@ -10,10 +10,10 @@ script = ExtResource("1_3ocd0")
 
 [node name="HUD" parent="UI" instance=ExtResource("2_4rvg1")]
 
-[node name="Players" type="Node2D" parent="."]
+[node name="Players" type="Node" parent="."]
 
-[node name="Lasers" type="Node2D" parent="."]
+[node name="Lasers" type="Node" parent="."]
 
-[node name="Asteroids" type="Node2D" parent="."]
+[node name="Asteroids" type="Node" parent="."]
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="Enemies" type="Node" parent="."]

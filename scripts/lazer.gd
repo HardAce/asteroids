@@ -17,8 +17,13 @@ func _process(delta: float) -> void:
 	if total_time > 1:
 		queue_free()
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(area) -> void:
 	if area is Asteroid:
+		var asteroid = area
+		asteroid.explode()
+		queue_free()
+	
+	if area is Asteroid_2:
 		var asteroid = area
 		asteroid.explode()
 		queue_free()

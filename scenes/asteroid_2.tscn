@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/asteroid_2.gd" id="1_mxk6r"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kpwbw"]
+friction = 0.0
 bounce = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0iw03"]
@@ -11,7 +12,7 @@ radius = 46.0109
 
 [node name="asteroid2" type="RigidBody2D"]
 collision_layer = 4
-collision_mask = 11
+collision_mask = 31
 mass = 2.0
 physics_material_override = SubResource("PhysicsMaterial_kpwbw")
 gravity_scale = 0.0
