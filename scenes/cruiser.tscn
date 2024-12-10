@@ -4,7 +4,8 @@
 [ext_resource type="Script" path="res://scripts/cruiser.gd" id="1_nv5iu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qdb1e"]
-bounce = 0.5
+rough = true
+bounce = 0.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3la5"]
 size = Vector2(169, 149)
@@ -15,6 +16,8 @@ collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_qdb1e")
 gravity_scale = 0.0
 continuous_cd = 2
+linear_damp_mode = 1
+angular_damp_mode = 1
 script = ExtResource("1_nv5iu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

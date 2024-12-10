@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b242jlg7xic67" path="res://assets/PNG/playerShip3_red.png" id="2_g53l8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g6hja"]
-bounce = 0.5
+rough = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fwus2"]
 radius = 46.1736
@@ -12,10 +12,13 @@ radius = 46.1736
 [node name="player2" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 5
+mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_g6hja")
 gravity_scale = 0.0
 continuous_cd = 2
 contact_monitor = true
+linear_damp_mode = 1
+angular_damp_mode = 1
 script = ExtResource("1_peh5o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

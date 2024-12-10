@@ -6,7 +6,7 @@ extends Node2D
 @onready var cruiser = $Enemies
 @onready var hud = $UI/HUD
 
-var player_scene = preload("res://scenes/player.tscn")
+var player_scene = preload("res://scenes/player_2.tscn")
 var asteroid_scene = preload("res://scenes/asteroid_2.tscn")
 var lasers_scene = preload("res://scenes/lazer.tscn")
 var cruiser_scene = preload("res://scenes/cruiser.tscn")
@@ -21,8 +21,8 @@ var score := 0:
 func _ready() -> void:
 	score = 0
 	var screen_size = get_viewport_rect().size
-	#var a = player_scene.instantiate()
-	var a = cruiser_scene.instantiate()
+	var a = player_scene.instantiate()
+	#var a = cruiser_scene.instantiate()
 	a.connect("laser_shot", _on_player_laser_shot)
 	var valid = true
 	while (valid):

@@ -18,6 +18,8 @@ physics_material_override = SubResource("PhysicsMaterial_kpwbw")
 gravity_scale = 0.0
 continuous_cd = 2
 contact_monitor = true
+linear_damp_mode = 1
+angular_damp_mode = 1
 script = ExtResource("1_mxk6r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -25,3 +27,5 @@ texture = ExtResource("1_2da1t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0iw03")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

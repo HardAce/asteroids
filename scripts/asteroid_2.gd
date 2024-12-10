@@ -18,7 +18,7 @@ func _ready() -> void:
 	
 	match size:
 		AsteroidSize.LARGE:
-			speed = randf_range(500.0, 1000.0)
+			speed = randf_range(50.0, 100.0)
 			set_linear_velocity(Vector2(speed,0).rotated(randf() * 2.0 * PI))
 			cshape.shape = preload("res://resources/asteroid_cshape_large1.tres")
 			if randi_range(0,1) == 0:
