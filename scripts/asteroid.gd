@@ -74,7 +74,9 @@ func explode():
 		AsteroidSize.MEDIUM:
 			new_size = AsteroidSize.SMALL
 		AsteroidSize.SMALL:
-			new_size = AsteroidSize.TINY
+			#new_size = AsteroidSize.TINY
+			queue_free()
+			return
 		AsteroidSize.TINY:
 			queue_free()
 			return

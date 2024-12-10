@@ -6,11 +6,13 @@ extends Node2D
 @onready var asteroids = $Asteroids
 @onready var hud = $UI/HUD
 #@onready var cruiser = $Cruiser
+@onready var cruiser = $Enemies
 #@onready var player2 = $Player2
 
 var player_scene = preload("res://scenes/player.tscn")
 var asteroid_scene = preload("res://scenes/asteroid.tscn")
 var lasers_scene = preload("res://scenes/lazer.tscn")
+var crusier_scene = preload("res://scenes/cruiser.tscn")
 
 var candidate : Vector2
 
@@ -30,6 +32,17 @@ func _ready() -> void:
 		valid = false
 	a.global_position = candidate
 	players.add_child(a)
+	
+	"""
+	a = crusier_scene.instantiate()
+	a.connect("laser_shot", _on_cruiser_laser_shot)
+	while (valid):
+		candidate = Vector2(randi_range(0,screen_size.x), randi_range(0,screen_size.y))
+		valid = false
+	a.global_position = candidate
+	cruiser.call_deferred("add_child", a)
+	"""
+	
 	#players.call_deferred("add_child", a)
 	#player2.connect("laser_shot", _on_player_laser_shot)
 	#cruiser.connect("laser_shot", _on_cruiser_laser_shot)
@@ -61,5 +74,5 @@ func _on_asteroid_exploded(pos, size, points):
 		asteroids.call_deferred("add_child", a)
 
 
-#func _on_cruiser_laser_shot(laser: Variant) -> void:
-#	lasers.call_deferred("add_child", laser)
+func _on_cruiser_laser_shot(laser: Variant) -> void:
+	lasers.call_deferred("add_child", laser)
