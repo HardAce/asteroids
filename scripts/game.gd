@@ -44,7 +44,7 @@ func _ready() -> void:
 	#players.call_deferred("add_child", a)
 	#player2.connect("laser_shot", _on_player_laser_shot)
 	#cruiser.connect("laser_shot", _on_cruiser_laser_shot)
-	for i in range(50):
+	for i in range(5):
 		valid = true
 		while (valid):
 			candidate = Vector2(randi_range(0,screen_size.x), randi_range(0,screen_size.y))
