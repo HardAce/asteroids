@@ -28,19 +28,6 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	get_input()
 	
-	"""
-	linear_velocity += input_vector.rotated(rotation) * acceleration
-	linear_velocity.limit_length(max_speed)
-	
-	thrust = Vector2.ZERO
-	
-	if (Input.is_action_just_released("rotate_left") or Input.is_action_just_released("rotate_right")):
-		lock_rotation = true
-	else:
-		lock_rotation = false
-	rotation_dir = Input.get_axis("rotate_left", "rotate_right")
-	"""
-	
 	if Input.is_action_pressed("stop_inertia"):
 		angular_damp += 12 * delta
 		linear_damp += 12 * delta
@@ -53,7 +40,6 @@ func _physics_process(delta: float) -> void:
 	
 	constant_force = thrust
 	constant_torque = rotation_dir * spin_power
-	
 	last_position = self.global_position
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:

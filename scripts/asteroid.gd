@@ -7,6 +7,7 @@ var speed := 50.0
 var direction := 0.0
 
 enum AsteroidSize{LARGE, MEDIUM, SMALL, TINY}
+
 @export var size := AsteroidSize.LARGE
 
 @onready var sprite = $Sprite2D
@@ -18,8 +19,8 @@ func _ready() -> void:
 	
 	match size:
 		AsteroidSize.LARGE:
-			#speed = randf_range(50.0, 100.0)
-			speed = 200
+			speed = randf_range(50.0, 100.0)
+			#speed = 200
 			cshape.shape = preload("res://resources/asteroid_cshape_large1.tres")
 			if randi_range(0,1) == 0:
 				sprite.texture = preload("res://assets/PNG/Meteors/meteorBrown_big1.png")
@@ -33,6 +34,7 @@ func _ready() -> void:
 				sprite.texture = preload("res://assets/PNG/Meteors/meteorBrown_med1.png")
 			else:
 				sprite.texture = preload("res://assets/PNG/Meteors/meteorGrey_med1.png")
+		
 		AsteroidSize.SMALL:
 			speed = randf_range(150.0, 200.0)
 			cshape.shape = preload("res://resources/asteroid_cshape_small1.tres")
@@ -40,6 +42,7 @@ func _ready() -> void:
 				sprite.texture = preload("res://assets/PNG/Meteors/meteorBrown_small1.png")
 			else:
 				sprite.texture = preload("res://assets/PNG/Meteors/meteorGrey_small1.png")
+		
 		AsteroidSize.TINY:
 			speed = randf_range(150.0, 200.0)
 			cshape.shape = preload("res://resources/asteroid_cshape_tiny1.tres")
@@ -49,14 +52,16 @@ func _ready() -> void:
 				sprite.texture = preload("res://assets/PNG/Meteors/meteorGrey_tiny1.png")
 
 func _physics_process(delta: float) -> void:
+	var screen_size = get_viewport_rect().size
+	
 	global_position += movement_vector.rotated(direction) * speed * delta
 	rotation += delta
 	
-	var screen_size = get_viewport_rect().size
 	if (global_position.y + cshape.shape.radius) < 0:
 		global_position.y = (screen_size.y + cshape.shape.radius)
 	elif (global_position.y - cshape.shape.radius) > screen_size.y:
 		global_position.y = -cshape.shape.radius
+	
 	if (global_position.x + cshape.shape.radius) < 0:
 		global_position.x = (screen_size.x + cshape.shape.radius)
 	elif (global_position.x - cshape.shape.radius) > screen_size.x:
@@ -68,17 +73,19 @@ func _on_body_entered(_body: Node2D) -> void:
 func explode():
 	var new_size
 	var points := 100
+	
 	match size:
 		AsteroidSize.LARGE:
 			new_size = AsteroidSize.MEDIUM
 		AsteroidSize.MEDIUM:
 			new_size = AsteroidSize.SMALL
 		AsteroidSize.SMALL:
-			#new_size = AsteroidSize.TINY
+			new_size = AsteroidSize.TINY
 			queue_free()
 			return
 		AsteroidSize.TINY:
 			queue_free()
 			return
+	
 	exploded.emit(global_position, new_size, points)
 	queue_free()
