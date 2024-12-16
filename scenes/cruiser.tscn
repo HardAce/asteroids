@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bdyniyr7rkp1d"]
 
-[ext_resource type="Texture2D" uid="uid://bgnx0a0c7hnug" path="res://assets/kenney_space-shooter-extension/PNG/Sprites/Ships/spaceShips_007.png" id="1_7jbc6"]
-[ext_resource type="Script" path="res://scripts/cruiser.gd" id="1_nv5iu"]
+[ext_resource type="Script" path="res://scripts/cruiser.gd" id="1_i7gho"]
+[ext_resource type="Texture2D" uid="uid://bgnx0a0c7hnug" path="res://assets/kenney_space-shooter-extension/PNG/Sprites/Ships/spaceShips_007.png" id="2_a3qi4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qdb1e"]
 rough = true
@@ -18,11 +18,11 @@ gravity_scale = 0.0
 continuous_cd = 2
 linear_damp_mode = 1
 angular_damp_mode = 1
-script = ExtResource("1_nv5iu")
+script = ExtResource("1_i7gho")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 3.14159
-texture = ExtResource("1_7jbc6")
+texture = ExtResource("2_a3qi4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)

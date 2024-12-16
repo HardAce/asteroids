@@ -1,10 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ypry5ykgl5x3"]
+[gd_scene load_steps=3 format=3 uid="uid://ypry5ykgl5x3"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_cmbtm"]
-[ext_resource type="FontFile" uid="uid://ci6w22kfbvgyt" path="res://assets/Bonus/kenvector_future_thin.ttf" id="2_35vjc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gcm1i"]
-font = ExtResource("2_35vjc")
 font_size = 48
 
 [node name="HUD" type="Control"]

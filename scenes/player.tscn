@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://j5b36d5ofby5"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_gu1aq"]
-[ext_resource type="Texture2D" uid="uid://ds2xhehoa6vx5" path="res://assets/PNG/playerShip1_blue.png" id="1_hqbjr"]
-[ext_resource type="Texture2D" uid="uid://dkcyr4sfgpec4" path="res://assets/PNG/Effects/fire03.png" id="4_3se7i"]
-[ext_resource type="Texture2D" uid="uid://chcvvtubmppf8" path="res://assets/PNG/Effects/fire06.png" id="4_sm806"]
-[ext_resource type="Texture2D" uid="uid://sxb88i2jeroq" path="res://assets/PNG/Effects/fire07.png" id="5_fuqka"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ww7p5"]
+[ext_resource type="Texture2D" uid="uid://ds2xhehoa6vx5" path="res://assets/PNG/playerShip1_blue.png" id="2_dicv3"]
+[ext_resource type="Texture2D" uid="uid://dkcyr4sfgpec4" path="res://assets/PNG/Effects/fire03.png" id="3_qe5y8"]
+[ext_resource type="Texture2D" uid="uid://sxb88i2jeroq" path="res://assets/PNG/Effects/fire07.png" id="4_uy2e4"]
+[ext_resource type="Texture2D" uid="uid://chcvvtubmppf8" path="res://assets/PNG/Effects/fire06.png" id="5_wy7re"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2h83"]
 radius = 45.8912
@@ -13,13 +13,13 @@ radius = 45.8912
 animations = [{
 "frames": [{
 "duration": 3.0,
-"texture": ExtResource("4_3se7i")
+"texture": ExtResource("3_qe5y8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_fuqka")
+"texture": ExtResource("4_uy2e4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_sm806")
+"texture": ExtResource("5_wy7re")
 }],
 "loop": true,
 "name": &"thrust",
@@ -30,10 +30,10 @@ animations = [{
 collision_layer = 2
 collision_mask = 21
 motion_mode = 1
-script = ExtResource("1_gu1aq")
+script = ExtResource("1_ww7p5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_hqbjr")
+texture = ExtResource("2_dicv3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p2h83")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bynuy4lu5bbdu"]
 
-[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_reoll"]
+[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_63oab"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_okkpj"]
 font_size = 128
@@ -17,7 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_reoll")
+script = ExtResource("1_63oab")
 
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 1
@@ -44,7 +44,7 @@ offset_right = 320.0
 grow_vertical = 0
 text = "Quit"
 
-[node name="Label" type="Label" parent="."]
+[node name="GameTitle" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -71,8 +71,9 @@ min_value = 20.0
 max_value = 500.0
 step = 10.0
 value = 20.0
+tick_count = 1
 
-[node name="Label2" type="Label" parent="."]
+[node name="aCount" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0

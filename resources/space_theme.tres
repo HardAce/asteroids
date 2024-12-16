@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d0c8wdvb7du68"]
+
+[ext_resource type="FontFile" uid="uid://ci6w22kfbvgyt" path="res://assets/Bonus/kenvector_future_thin.ttf" id="1_txsvw"]
+
+[resource]
+default_font = ExtResource("1_txsvw")
+default_font_size = 32

@@ -15,11 +15,22 @@ run/main_scene="res://scenes/title_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://scripts/global.gd"
+
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
+mouse_cursor/custom_image="res://assets/kenney_ui-pack-space-expansion/PNG/Extra/Default/cursor_d.png"
+
+[gui]
+
+theme/custom="res://resources/space_theme.tres"
+theme/custom_font="res://assets/Bonus/kenvector_future_thin.ttf"
+theme/custom_image="res://assets/kenney_ui-pack-space-expansion/PNG/Extra/Default/cursor_d.png"
 
 [input]
 
