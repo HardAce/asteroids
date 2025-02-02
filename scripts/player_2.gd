@@ -3,10 +3,11 @@ extends RigidBody2D
 signal laser_shot(laser)
 
 @export var acceleration := 10.0
-@export var max_speed := 350.0
+@export var max_speed := 150.0
+@export var max_spin := 1.0
 @export var rotation_speed := 100.0
-@export var engine_power = 800
-@export var spin_power = 10000
+@export var engine_power = 8000
+@export var spin_power = 50000
 
 @onready var screensize = get_viewport_rect().size
 @onready var muzzle := $Muzzle
@@ -19,6 +20,7 @@ var thrust = Vector2.ZERO
 var rotation_dir = 0
 
 func _process(_delta: float) -> void:
+	get_viewport().get_mouse_position()
 	if Input.is_action_pressed("shoot") and !shoot_cd:
 		shoot_cd = true
 		shoot_laser()
@@ -46,6 +48,27 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	var xform = state.transform
 	xform.origin.x = wrapf(xform.origin.x, 0 - 49, screensize.x + 49)
 	xform.origin.y = wrapf(xform.origin.y, 0 - 38, screensize.y + 38)
+	if state.linear_velocity.length()>max_speed:
+		state.linear_velocity=state.linear_velocity.normalized()*max_speed
+	angular_velocity = (fposmod( (get_global_mouse_position() - global_position ).angle() - global_rotation + PI + PI/2, PI * 2 ) - PI) / .01
+	if abs(state.angular_velocity) > max_spin:
+		state.angular_velocity = max_spin * (state.angular_velocity / abs(state.angular_velocity))
+	"""
+https://www.reddit.com/r/godot/comments/e16krk/smooth_look_at_for_2d/
+
+set_angular_velocity((get_angle_to(get_global_mouse_position())) * -((get_angle_to(get_global_mouse_position())) -3.14) * 5)
+
+nodeToTurn.angular_velocity = (fposmod( (targetPosition - currentPosition).angle() - currentRotation + PI, PI * 2 ) - PI) / turnTime
+
+func SmoothLookAtRigid( nodeToTurn, targetPosition, turnSpeed ):
+	nodeToTurn.angular_velocity = AngularLookAt( nodeToTurn.global_position, nodeToTurn.global_rotation, targetPosition, turnSpeed )
+func AngularLookAt( currentPosition, currentRotation, targetPosition, turnTime ):
+	return GetAngle( currentRotation, TargetAngle( currentPosition, targetPosition ) )/turnTime
+func TargetAngle( currentPosition, targetPosition ):
+	return (targetPosition - currentPosition).angle()
+func GetAngle( currentAngle, targetAngle ):
+	return fposmod( targetAngle - currentAngle + PI, PI * 2 ) - PI
+	"""
 	state.transform = xform
 
 func get_input():

@@ -20,6 +20,7 @@ func _ready() -> void:
 	match size:
 		AsteroidSize.LARGE:
 			speed = randf_range(50.0, 100.0)
+			mass = 50
 			set_linear_velocity(Vector2(speed,0).rotated(randf() * 2.0 * PI))
 			set_angular_velocity(randf_range(-.5*PI, .5*PI))
 			cshape.shape = preload("res://resources/asteroid_cshape_large1.tres")
@@ -30,6 +31,7 @@ func _ready() -> void:
 			
 		AsteroidSize.MEDIUM:
 			speed = randf_range(100.0, 150.0)
+			mass = 25
 			set_linear_velocity(Vector2(speed,0).rotated(randf() * 2.0 * PI))
 			cshape.shape = preload("res://resources/asteroid_cshape_medium1.tres")
 			if randi_range(0,1) == 0:
@@ -39,6 +41,7 @@ func _ready() -> void:
 		
 		AsteroidSize.SMALL:
 			speed = randf_range(150.0, 200.0)
+			mass = 10
 			set_linear_velocity(Vector2(speed,0).rotated(randf() * 2.0 * PI))
 			cshape.shape = preload("res://resources/asteroid_cshape_small1.tres")
 			if randi_range(0,1) == 0:
