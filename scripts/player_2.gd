@@ -3,10 +3,10 @@ extends RigidBody2D
 signal laser_shot(laser)
 
 @export var acceleration := 10.0
-@export var max_speed := 150.0
-@export var max_spin := 1.0
+@export var max_speed := 300.0
+@export var max_spin := 2.0
 @export var rotation_speed := 100.0
-@export var engine_power = 8000
+@export var engine_power = 2000
 @export var spin_power = 50000
 
 @onready var screensize = get_viewport_rect().size
