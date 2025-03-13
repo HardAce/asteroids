@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5tkay70sme8f"]
 
-[ext_resource type="Script" path="res://scripts/lazer.gd" id="1_3vv84"]
+[ext_resource type="Script" uid="uid://byu13vnkj3wh0" path="res://scripts/lazer.gd" id="1_3vv84"]
 [ext_resource type="Texture2D" uid="uid://culb4foppbtmq" path="res://assets/PNG/Lasers/laserBlue01.png" id="2_wl2ff"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tf2tc"]
