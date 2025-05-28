@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dru14vuteq7s7"]
 
-[ext_resource type="Script" path="res://scripts/player_2.gd" id="1_8bly6"]
+[ext_resource type="Script" uid="uid://vvywrm6duofo" path="res://scripts/player_2.gd" id="1_8bly6"]
 [ext_resource type="Texture2D" uid="uid://b242jlg7xic67" path="res://assets/PNG/playerShip3_red.png" id="2_oigdp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g6hja"]

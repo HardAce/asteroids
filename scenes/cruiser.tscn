@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bdyniyr7rkp1d"]
 
-[ext_resource type="Script" path="res://scripts/cruiser.gd" id="1_i7gho"]
+[ext_resource type="Script" uid="uid://ssi10obf6q30" path="res://scripts/cruiser.gd" id="1_i7gho"]
 [ext_resource type="Texture2D" uid="uid://bgnx0a0c7hnug" path="res://assets/kenney_space-shooter-extension/PNG/Sprites/Ships/spaceShips_007.png" id="2_a3qi4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qdb1e"]
